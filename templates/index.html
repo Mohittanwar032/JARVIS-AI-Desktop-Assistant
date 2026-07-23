@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JARVIS // Neural Command System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- BACKGROUND EFFECTS -->
+    <div class="grid-bg"></div>
+    <div class="scanline"></div>
+    <div class="vignette"></div>
+
+    <div class="hud">
+
+        <!-- =====================================
+             TOP COMMAND BAR
+        ====================================== -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-reactor">
+                    <span></span>
+                </div>
+
+                <div>
+                    <h1>J.A.R.V.I.S</h1>
+                    <small>NEURAL COMMAND SYSTEM</small>
+                </div>
+
+            </div>
+
+
+            <div class="top-system">
+
+                <span class="online-dot"></span>
+
+                SYSTEM ONLINE
+
+                <span class="separator">//</span>
+
+                GEMINI CORE
+
+                <span class="separator">//</span>
+
+                MK-IV
+
+            </div>
+
+
+            <div class="clock-area">
+
+                <strong id="clock">
+                    00:00:00
+                </strong>
+
+                <span id="date">
+                    INITIALIZING
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             LEFT TELEMETRY
+        ====================================== -->
+
+        <aside class="left-column">
+
+
+            <!-- PROCESSOR -->
+
+            <section class="glass-panel">
+
+                <div class="panel-heading">
+
+                    <span>
+                        PROCESSOR MATRIX
+                    </span>
+
+                    <small>
+                        01
+                    </small>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-header">
+
+                        <span>CPU LOAD</span>
+
+                        <strong id="cpuValue">
+                            31%
+                        </strong>
+
+                    </div>
+
+                    <div class="metric-track">
+
+                        <div class="metric-fill"
+                             style="width:31%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-header">
+
+                        <span>MEMORY</span>
+
+                        <strong id="ramValue">
+                            52%
+                        </strong>
+
+                    </div>
+
+                    <div class="metric-track">
+
+                        <div class="metric-fill"
+                             style="width:52%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-header">
+
+                        <span>STORAGE</span>
+
+                        <strong id="diskValue">
+                            28%
+                        </strong>
+
+                    </div>
+
+                    <div class="metric-track">
+
+                        <div class="metric-fill gold"
+                             style="width:28%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="micro-data">
+
+                    <span>THREADS // 16</span>
+                    <span>UPTIME // ACTIVE</span>
+                    <span>CORE TEMP // NOMINAL</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- NETWORK -->
+
+            <section class="glass-panel network-panel">
+
+                <div class="panel-heading">
+
+                    <span>
+                        NETWORK UPLINK
+                    </span>
+
+                    <small>
+                        02
+                    </small>
+
+                </div>
+
+
+                <div class="radar">
+
+                    <div class="radar-circle r1"></div>
+                    <div class="radar-circle r2"></div>
+                    <div class="radar-circle r3"></div>
+
+                    <div class="radar-line"></div>
+
+                    <div class="radar-target t1"></div>
+                    <div class="radar-target t2"></div>
+
+                </div>
+
+
+                <div class="micro-data">
+
+                    <span>CONNECTION // SECURE</span>
+                    <span>LATENCY // ACTIVE</span>
+                    <span>ENCRYPTION // ENABLED</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- POWER -->
+
+            <section class="glass-panel power-panel">
+
+                <div class="panel-heading">
+
+                    <span>
+                        POWER MATRIX
+                    </span>
+
+                    <small>
+                        03
+                    </small>
+
+                </div>
+
+
+                <div class="power-layout">
+
+                    <div class="power-ring">
+
+                        <div id="batteryValue">
+                            --%
+                        </div>
+
+                        <small>POWER</small>
+
+                    </div>
+
+
+                    <div class="power-data">
+
+                        <span>AC // CONNECTED</span>
+                        <span>CORE // STABLE</span>
+                        <span>OUTPUT // NOMINAL</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+
+        <!-- =====================================
+             CENTRAL AI CORE
+        ====================================== -->
+
+        <main class="core-zone">
+
+
+            <!-- coordinates -->
+
+            <span class="coordinate coord-one">
+                X 21.486
+            </span>
+
+            <span class="coordinate coord-two">
+                Y 87.294
+            </span>
+
+
+            <!-- giant outer HUD -->
+
+            <div class="mega-hud">
+
+
+                <div class="orbit orbit-1"></div>
+
+                <div class="orbit orbit-2"></div>
+
+                <div class="orbit orbit-3"></div>
+
+                <div class="orbit orbit-4"></div>
+
+
+                <div class="crosshair horizontal"></div>
+
+                <div class="crosshair vertical"></div>
+
+
+                <!-- TARGET MARKERS -->
+
+                <span class="target-marker marker-one">
+                    01
+                </span>
+
+                <span class="target-marker marker-two">
+                    07
+                </span>
+
+                <span class="target-marker marker-three">
+                    42
+                </span>
+
+
+                <!-- =============================
+                     REACTOR
+                ============================== -->
+
+                <div class="reactor">
+
+                    <div class="reactor-ring reactor-r1"></div>
+
+                    <div class="reactor-ring reactor-r2"></div>
+
+                    <div class="reactor-ring reactor-r3"></div>
+
+                    <div class="reactor-ring reactor-r4"></div>
+
+
+                    <div class="reactor-triangle">
+
+                        <div class="reactor-core"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="core-label">
+
+                    <span>
+                        ARTIFICIAL INTELLIGENCE CORE
+                    </span>
+
+                    <strong>
+                        JARVIS
+                    </strong>
+
+                    <small>
+                        NEURAL ENGINE // ACTIVE
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 VOICE AREA
+            ====================================== -->
+
+            <section class="voice-interface">
+
+
+                <div class="voice-state">
+
+                    <span class="voice-dot"></span>
+
+
+                    <!-- KEEP ID -->
+
+                    <strong id="statusText">
+                        READY
+                    </strong>
+
+                </div>
+
+
+                <!-- KEEP ID -->
+
+                <div id="jarvisMessage">
+
+                    Neural interface online.
+                    Awaiting command, Mohit.
+
+                </div>
+
+
+                <!-- AUDIO SPECTRUM -->
+
+                <div class="spectrum">
+
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+
+                </div>
+
+
+                <!-- KEEP ID -->
+
+                <button id="micButton">
+
+                    <span class="mic-symbol">
+                        ◉
+                    </span>
+
+                    INITIATE VOICE LINK
+
+                </button>
+
+            </section>
+
+
+            <!-- tiny technical text -->
+
+            <div class="core-technical">
+
+                <span>
+                    SYS.88 // NEURAL PROCESSING
+                </span>
+
+                <span>
+                    LANGUAGE MATRIX // EN-IN
+                </span>
+
+                <span>
+                    RESPONSE ENGINE // ACTIVE
+                </span>
+
+            </div>
+
+        </main>
+
+
+        <!-- =====================================
+             RIGHT COMMAND MODULES
+        ====================================== -->
+
+        <aside class="right-column">
+
+
+            <!-- QUICK LAUNCH -->
+
+            <section class="glass-panel">
+
+                <div class="panel-heading">
+
+                    <span>
+                        COMMAND MATRIX
+                    </span>
+
+                    <small>
+                        04
+                    </small>
+
+                </div>
+
+
+                <div class="command-grid">
+
+
+                    <button onclick="window.open('https://www.youtube.com','_blank')">
+
+                        <span>01</span>
+
+                        YOUTUBE
+
+                        <small>MEDIA NODE</small>
+
+                    </button>
+
+
+                    <button onclick="window.open('https://www.google.com','_blank')">
+
+                        <span>02</span>
+
+                        GOOGLE
+
+                        <small>SEARCH NODE</small>
+
+                    </button>
+
+
+                    <button onclick="window.open('https://github.com','_blank')">
+
+                        <span>03</span>
+
+                        GITHUB
+
+                        <small>CODE NODE</small>
+
+                    </button>
+
+
+                    <button onclick="window.open('https://www.linkedin.com','_blank')">
+
+                        <span>04</span>
+
+                        LINKEDIN
+
+                        <small>NETWORK NODE</small>
+
+                    </button>
+
+
+                    <button>
+
+                        <span>05</span>
+
+                        TERMINAL
+
+                        <small>SYSTEM NODE</small>
+
+                    </button>
+
+
+                    <button>
+
+                        <span>06</span>
+
+                        FILES
+
+                        <small>DATA NODE</small>
+
+                    </button>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- NEURAL ACTIVITY -->
+
+            <section class="glass-panel">
+
+                <div class="panel-heading">
+
+                    <span>
+                        NEURAL ACTIVITY
+                    </span>
+
+                    <small>
+                        05
+                    </small>
+
+                </div>
+
+
+                <div class="neural-graph">
+
+                    <div class="graph-line"></div>
+
+                    <span class="node n1"></span>
+                    <span class="node n2"></span>
+                    <span class="node n3"></span>
+                    <span class="node n4"></span>
+                    <span class="node n5"></span>
+                    <span class="node n6"></span>
+
+                </div>
+
+
+                <div class="micro-data">
+
+                    <span>AI ENGINE // GEMINI</span>
+                    <span>VOICE // ONLINE</span>
+                    <span>VISION // STANDBY</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- VISION -->
+
+            <section class="glass-panel vision-module">
+
+                <div class="panel-heading">
+
+                    <span>
+                        OPTICAL INTERFACE
+                    </span>
+
+                    <small>
+                        06
+                    </small>
+
+                </div>
+
+
+                <div class="vision-screen">
+
+                    <div class="vision-reticle">
+
+                        <div></div>
+
+                    </div>
+
+
+                    <span>
+                        VISION SYSTEM STANDBY
+                    </span>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+
+        <!-- =====================================
+             BOTTOM TERMINAL
+        ====================================== -->
+
+        <section class="terminal-panel">
+
+            <div class="terminal-header">
+
+                <span>
+                    JARVIS // COMMAND STREAM
+                </span>
+
+                <small>
+                    LIVE
+                </small>
+
+            </div>
+
+
+            <div id="conversation">
+
+                <p>
+                    <span class="sys">
+                        SYSTEM //
+                    </span>
+
+                    Neural command interface initialized.
+                </p>
+
+
+                <p>
+                    <span class="ai">
+                        JARVIS //
+                    </span>
+
+                    Awaiting voice authorization.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer>
+
+            <span>
+                ● CORE ACTIVE
+            </span>
+
+            <span>
+                ● VOICE LINK READY
+            </span>
+
+            <span>
+                ● NETWORK SECURE
+            </span>
+
+            <span>
+                ● OPTICAL SYSTEM STANDBY
+            </span>
+
+            <span>
+                JARVIS OS // MK-IV
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <!-- CLOCK -->
+
+    <script>
+
+        function updateClock() {
+
+            const now = new Date();
+
+            document.getElementById("clock").innerText =
+                now.toLocaleTimeString(
+                    "en-IN",
+                    {
+                        hour12: false
+                    }
+                );
+
+            document.getElementById("date").innerText =
+                now.toLocaleDateString(
+                    "en-IN",
+                    {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric"
+                    }
+                );
+        }
+
+        updateClock();
+
+        setInterval(updateClock, 1000);
+
+    </script>
+
+
+    <!-- EXISTING VOICE CODE -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
