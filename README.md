@@ -1,3 +1,9 @@
+## 🖥️ JARVIS Interface
+
+<p align="center">
+  <img src="assets/jarvis-dashboard.png" alt="JARVIS AI Desktop Assistant" width="100%">
+</p>
+
 # 🤖 JARVIS AI Desktop Assistant
 
 An AI-powered voice-controlled desktop assistant inspired by JARVIS, built using Python, Flask, JavaScript, and the Gemini API.
